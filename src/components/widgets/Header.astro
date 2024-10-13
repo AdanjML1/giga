@@ -1,6 +1,5 @@
 ---
 import { Icon } from 'astro-icon/components';
-import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import Button from '~/components/ui/Button.astro';
@@ -72,7 +71,8 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   >
     <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
       <a class="flex items-center" href={getHomePermalink()}>
-        <Logo />
+        <!-- Usa la etiqueta img para mostrar el logo -->
+        <img src='src/assets/images/logo.png' width={180} height={180} loading={'lazy'} alt="Giga Logo" class="h-16 w-auto" />
       </a>
       <div class="flex items-center md:hidden">
         <ToggleMenu />
