@@ -1,59 +1,64 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
     {
-      text: 'Homes',
+      text: 'Inicio',
+      // links: [
+      //   // {
+      //   //   text: 'SaaS',
+      //   //   href: getPermalink('/homes/saas'),
+      //   // },
+      //   // {
+      //   //   text: 'Startup',
+      //   //   href: getPermalink('/homes/startup'),
+      //   // },
+      //   // {
+      //   //   text: 'Mobile App',
+      //   //   href: getPermalink('/homes/mobile-app'),
+      //   // },
+      //   // {
+      //   //   text: 'Personal',
+      //   //   href: getPermalink('/homes/personal'),
+      //   // },
+      // ],
+      href: getPermalink('/'),
+    },
+    {
+      text: 'Menu',
       links: [
+        // {
+        //   text: 'Features (Anchor Link)',
+        //   href: getPermalink('/#features'),
+        // },
+        // {
+        //   text: 'Services',
+        //   href: getPermalink('/services'),
+        // },
         {
-          text: 'SaaS',
-          href: getPermalink('/homes/saas'),
+          text: 'Planes de internet',
+          href: getPermalink('/pricing'),
         },
+        // {
+        //   text: 'About us',
+        //   href: getPermalink('/about'),
+        // },
         {
-          text: 'Startup',
-          href: getPermalink('/homes/startup'),
+          text: 'Contacto',
+          href: getPermalink('/contact'),
         },
         {
           text: 'Mobile App',
           href: getPermalink('/homes/mobile-app'),
         },
-        {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
-        },
-      ],
-    },
-    {
-      text: 'Pages',
-      links: [
-        {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
-        },
-        {
-          text: 'Services',
-          href: getPermalink('/services'),
-        },
-        {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
-        },
-        {
-          text: 'About us',
-          href: getPermalink('/about'),
-        },
-        {
-          text: 'Contact',
-          href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
+        // {
+        //   text: 'Terms',
+        //   href: getPermalink('/terms'),
+        // },
+        // {
+        //   text: 'Privacy policy',
+        //   href: getPermalink('/privacy'),
+        // },
       ],
     },
     // {
@@ -111,7 +116,7 @@ export const headerData = {
     //   ],
     // },
     {
-      text: 'Widgets',
+      text: 'Algo extra...',
       href: '#',
     },
   ],

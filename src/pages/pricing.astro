@@ -1,10 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
+// import HeroText from '~/components/widgets/HeroText.astro';
 import Prices from '~/components/widgets/Pricing.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Features3 from '~/components/widgets/Features3.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
@@ -15,36 +12,36 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
 
-  <HeroText
+  <!-- <HeroText
     tagline="Pricing"
     title="Stellar Pricing for Every Journey"
     subtitle="Choose the perfect plan that aligns with your cosmic goals."
-  />
+  /> -->
 
   <!-- Pricing Widget ******************* -->
 
   <Prices
-    title="Our prices"
-    subtitle="Only pay for what you need"
+    title="Nuestros planes"
+    subtitle="Solo paga por lo que necesitas"
     prices={[
       {
-        title: 'basic',
-        subtitle: 'Optimal choice for personal use',
-        price: 29,
-        period: 'per month',
+        title: 'giga basic',
+        // subtitle: 'Optimo para uso domiciliario',
+        price: 329,
+        period: 'Por mes',
         items: [
           {
-            description: 'Etiam in libero, et volutpat',
+            description: 'Disfruta de 20 megas de velocidad',
           },
           {
-            description: 'Aenean ac nunc dolor tristique',
+            description: 'Ideal para hogares pequeños o personas que necesitan internet para navegar',
           },
           {
-            description: 'Cras scelerisque accumsan lib',
+            description: 'Revisar correos, redes sociales',
           },
           {
-            description: 'In hac habitasse',
-          },
+            description: 'Adecuado para ver videos en resolución estándar (SD) en plataformas de streaming',
+          }
         ],
         callToAction: {
           target: '_blank',
@@ -53,26 +50,26 @@ const metadata = {
         },
       },
       {
-        title: 'standard',
-        subtitle: 'Optimal choice for small teams',
-        price: 69,
-        period: 'Per Month',
+        title: 'giga plus',
+        // subtitle: 'Optimo para varios dispositivos en la misma red',
+        price: 430,
+        period: 'Por mes',
         items: [
           {
-            description: 'Proin vel laoreet',
+            description: 'Disfruta de 30 megas de velocidad',
           },
           {
-            description: 'Ut efficitur habitasse egestas',
+            description: 'Perfecto para hogares medianos que requieren un internet más rápido para videollamadas en HD',
           },
           {
-            description: 'Volutpat hac curabitur',
+            description: 'Navega sin interrupciones',
           },
           {
-            description: 'Pellentesque blandit ut nibh',
+            description: 'Streaming fluido en HD sin problemas',
           },
           {
-            description: 'Donec fringilla sem',
-          },
+            description: 'Soporta juegos en línea con buena estabilidad',
+          }
         ],
         callToAction: {
           target: '_blank',
@@ -83,22 +80,59 @@ const metadata = {
         ribbonTitle: 'popular',
       },
       {
-        title: 'premium',
-        subtitle: 'Optimal choice for companies',
-        price: 199,
-        period: 'Per Month',
+        title: 'giga max',
+        // subtitle: 'Disfruta de la mejor velocidad',
+        price: 529,
+        period: 'Por mes',
         items: [
           {
-            description: 'Curabitur suscipit risus',
+            description: 'Disfruta de 40 megas de velocidad',
           },
           {
-            description: 'Aliquam habitasse malesuada',
+            description: 'Excelente para familias o usuarios avanzados que necesitan internet para teletrabajo',
           },
           {
-            description: 'Suspendisse sit amet blandit',
+            description: 'Videollamadas en alta resolución',
           },
           {
-            description: 'Suspendisse auctor blandit dui',
+            description: 'Juegos en línea sin latencia',
+          },
+          {
+            description: 'Transmisión de videos en Full HD sin problemas',
+          },
+          {
+            description: 'Descargas rapidas',
+          }
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Get started',
+          href: '#',
+        },
+      },
+      {
+        title: 'giga super',
+        // subtitle: 'Optimal choice for companies',
+        price: 629,
+        period: 'Por mes',
+        items: [
+          {
+            description: 'Disfruta de 60 megas de velocidad',
+          },
+          {
+            description: 'Ideal para hogares grandes o usuarios que dependen del internet para múltiples dispositivos simultáneamente',
+          },
+          {
+            description: 'Videollamadas en 4K',
+          },
+          {
+            description: 'Streaming en 4K sin interrupciones',
+          },
+          {
+            description: 'Velocidad máxima para descargas pesadas',
+          },
+          {
+            description: 'Excelente rendimiento en gaming competitivo online',
           },
         ],
         callToAction: {
@@ -110,134 +144,16 @@ const metadata = {
     ]}
   />
 
-  <!-- Features3 Widget ************** -->
 
-  <Features3
-    title="Price-related features"
-    subtitle="Discover the advantages of choosing our plans"
-    columns={2}
-    items={[
-      {
-        title: 'Tiered Pricing Plans',
-        description: 'Choose from a range of pricing plans designed to accommodate different budgets and requirements.',
-        icon: 'tabler:stairs',
-      },
-      {
-        title: 'Transparent Pricing',
-        description: 'Clearly displayed pricing details for each plan, with no hidden costs or unexpected charges.',
-        icon: 'tabler:flip-vertical',
-      },
-      {
-        title: 'Secure Payment Methods',
-        description: 'Secure payment gateways to protect your financial information during transactions.',
-        icon: 'tabler:shield-lock',
-      },
-      {
-        title: 'Instant Access',
-        description: `Immediate access to your chosen plan's features and templates upon subscription.`,
-        icon: 'tabler:accessible',
-      },
-      {
-        title: 'Upgrade Value',
-        description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
-        icon: 'tabler:chevrons-up',
-      },
-      {
-        title: '24H support',
-        description: 'Questions answered via live chat, email or phone, every calendar day.',
-        icon: 'tabler:headset',
-      },
-    ]}
-    classes={{ container: 'max-w-5xl' }}
-  />
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="A guided journey from plans to creativity"
-    tagline="simplified process"
-    isReversed={true}
-    items={[
-      {
-        title: 'Explore plans',
-        icon: 'tabler:number-1',
-      },
-      {
-        title: 'Select a plan',
-        icon: 'tabler:number-2',
-      },
-      {
-        title: 'Sign Up / Log In',
-        icon: 'tabler:number-3',
-      },
-      {
-        title: 'Review order',
-        icon: 'tabler:number-4',
-      },
-      {
-        title: 'Enter payment details',
-        icon: 'tabler:number-5',
-      },
-      {
-        title: 'Confirmation',
-        icon: 'tabler:number-6',
-      },
-      {
-        title: 'Download and start using the template(s)',
-        icon: 'tabler:number-7',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1536816579748-4ecb3f03d72a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Pricing FAQs"
-    subtitle="Choosing the right plan is important, and we're here to answer your questions. If you have queries about our pricing options, you're in the right place."
-    columns={1}
-    items={[
-      {
-        title: 'Do the plans come with customer support?',
-        description:
-          'Absolutely, all plans include access to our dedicated customer support to assist you with any queries or concerns.',
-      },
-      {
-        title: 'Is there a trial period for the different plans?',
-        description:
-          "Unfortunately, we don't offer trial periods for the plans. However, you can check out our demo section to preview the quality of our templates.",
-      },
-      {
-        title: 'Can I switch between plans?',
-        description:
-          'Certainly! You can easily upgrade or downgrade your plan, at any time, to find the one that best suits your evolving requirements.',
-      },
-      {
-        title: 'What payment methods do you accept?',
-        description:
-          'We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.',
-      },
-      {
-        title: 'Are there any hidden fees beyond the displayed cost?',
-        description:
-          'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
-      },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    title="Ready to boost your projects?"
-    subtitle="Join our community of satisfied customers who have transformed their work with our templates."
+    title="¿Necesitas ayuda?"
+    subtitle="Contactanos para brindarte más información"
     actions={[
       {
         variant: 'primary',
-        text: 'Get started now',
-        href: '/',
+        text: 'Contacto',
+        href: '/contact',
       },
     ]}
   />

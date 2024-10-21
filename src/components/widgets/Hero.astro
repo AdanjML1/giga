@@ -1,17 +1,50 @@
 ---
-import Image from '~/components/common/Image.astro';
-import Button from '~/components/ui/Button.astro';
+// import Image from '~/components/common/Image.astro';
 
 import type { Hero as Props } from '~/types';
+import Carrousel from '~/components/react/Carrousel.jsx';
+
+const slidesData = [
+  {
+    title: "Perfecto para trabajar desde casa",
+    color_title: "text-blue-700 dark:text-sky-600 highlight",
+    description: "Trabaja desde casa con la confianza de una red confieble de fibra óptica.",
+    imageSrc: "images/remote.jpg", // Usa la variable importada correctamente
+    imageAlt: "Descripción de la imagen",
+  },
+  // Otros slides si los tienes...
+  {
+    title: "Mirar contenido sin interrupciones",
+    color_title: "text-violet-800 dark:text-violet-800 highlight",
+    description: "Disfruta de mirar tus aplicaciones de streaming en alta resolución.",
+    imageSrc: "images/contenido.jpg", // Usa la variable importada correctamente
+    imageAlt: "Descripción de la imagen",
+  },
+  {
+    title: "Juega sin límites ni interrupciones",
+    color_title: "text-green-700 dark:text-green-700 highlight",
+    description: "Disfruta de una conexión estable y con baja latencia.",
+    imageSrc: "images/play.jpg", // Usa la variable importada correctamente
+    imageAlt: "Descripción de la imagen",
+  },
+  {
+    title: "Descarga tu contenido favorito a toda velocidad",
+    color_title: "text-orange-600 dark:text-orange-600 highlight",
+    description: "Descarga todo el contenido que necesitas sin cargos extra.",
+    imageSrc: "images/lazy.jpg", // Usa la variable importada correctamente
+    imageAlt: "Descripción de la imagen",
+  },
+];
 
 const {
-  title = 'Conectando tu mundo a la velocidad de la luz',
+  title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
+  // title = 'Conectando tu mundo a la velocidad de la luz',
+  // subtitle = 'GigaNet es la mejor solución para tus necesidades de conectividad',
   tagline,
 
   content = await Astro.slots.render('content'),
-  actions = await Astro.slots.render('actions'),
-  image = await Astro.slots.render('image'),
+  // image = await Astro.slots.render('image'),
 
   id,
   bg = await Astro.slots.render('bg'),
@@ -53,7 +86,7 @@ const {
               />
             )
           }
-          {
+          <!-- {
             actions && (
               <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
                 {Array.isArray(actions) ? (
@@ -67,32 +100,14 @@ const {
                 )}
               </div>
             )
-          }
+          } -->
         </div>
         {content && <Fragment set:html={content} />}
       </div>
       <div
         class="intersect-once intercept-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
       >
-        {
-          image && (
-            <div class="relative m-auto max-w-5xl">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
-                <Image
-                  class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  loading="eager"
-                  width={1024}
-                  height={576}
-                  {...image}
-                />
-              )}
-            </div>
-          )
-        }
+        <Carrousel slides={slidesData} duration={5000} client:load/>
       </div>
     </div>
   </div>
