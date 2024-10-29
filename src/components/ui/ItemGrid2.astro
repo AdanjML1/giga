@@ -14,7 +14,13 @@ const {
   description: descriptionClass = '',
   icon: defaultIconClass = 'text-primary',
 } = classes;
+
+console.log(items);
 ---
+<!-- 
+<script>
+  console.log(items);
+</script> -->
 
 {
   items && (
@@ -24,15 +30,16 @@ const {
           columns === 4
             ? 'lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'
             : columns === 3
-              ? 'lg:grid-cols-3 sm:grid-cols-2'
-              : columns === 2
-                ? 'sm:grid-cols-2 '
-                : ''
+            ? 'lg:grid-cols-3 sm:grid-cols-2'
+            : columns === 2
+            ? 'sm:grid-cols-2 '
+            : ''
         }`,
         containerClass
       )}
     >
-      {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }) => (
+      {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }) => 
+      (
         <div
           class={twMerge(
             'relative flex flex-col intersect-once intersect-quarter intercept-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
@@ -49,7 +56,11 @@ const {
           )}
           {callToAction && (
             <div class="mt-2">
-              <Button {...callToAction} />
+              <a href={callToAction.href} target="_blank" rel="noopener noreferrer" class="inline-block">
+                {/* <Button label={callToAction.label} /> */}
+                <Button {...callToAction} />
+              </a>
+              
             </div>
           )}
         </div>
@@ -57,3 +68,6 @@ const {
     </div>
   )
 }
+<!-- <script>
+  console.log(items);
+</script> -->

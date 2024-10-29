@@ -5,12 +5,6 @@ import Header from '~/components/widgets/Header.astro';
 
 import Hero2 from '~/components/widgets/Hero2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Content from '~/components/widgets/Content.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-
 import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
 
@@ -79,133 +73,15 @@ const metadata = {
     </div>
   </Hero2>
 
-  <!-- Features3 Widget ************** -->
 
-  <Features3
-    id="features"
-    title="How to use our app?"
-    subtitle="Tired of spending hours crafting documents from scratch? Our app offers an innovative solution. With a wide array of professionally designed templates, you can now create stunning documents in minutes. Explore our templates now and experience the difference."
-    tagline="Step-by-step guide"
-    columns={2}
-    items={[
-      {
-        title: 'Download and install the app',
-        description: `Begin your journey by downloading our user-friendly app from your device's app store or our official website.`,
-        icon: 'tabler:square-number-1',
-      },
-      {
-        title: 'Sign up',
-        description:
-          'Create your account by providing the necessary information, enabling you to access our full range of features.',
-        icon: 'tabler:square-number-2',
-      },
-      {
-        title: 'Browse templates',
-        description: 'Explore our diverse collection of website templates, categorized for easy navigation.',
-        icon: 'tabler:square-number-3',
-      },
-      {
-        title: 'Preview and select a template',
-        description: `Visualize the potential of each template through previews, then choose the one that aligns best with your project's needs.`,
-        icon: 'tabler:square-number-4',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1521517407911-565264e7d82d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80',
-      alt: 'Colorful Image',
-    }}
-  />
 
-  <!-- Content Widget **************** -->
 
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'User-friendly interface',
-        description:
-          'An intuitive and easy-to-navigate interface that allows users to quickly browse and find the templates they need.',
-        icon: 'tabler:wand',
-      },
-      {
-        title: 'Personalization options',
-        description:
-          'Include basic customization tools that let users modify text, colors, images, and other elements within the templates.',
-        icon: 'tabler:settings',
-      },
-      {
-        title: 'Ready-to-use components',
-        description:
-          'Enhance your designs with ready-to-use elements like graphics, icons, and layouts, saving you time and boosting visual appeal.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Preview Mode',
-        description: 'Provide a preview of each template, allowing users to see how it looks before making a purchase.',
-        icon: 'tabler:carousel-horizontal',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1576153192621-7a3be10b356e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
-    </Fragment>
-  </Content>
 
-  <!-- Content Widget **************** -->
 
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'Offline Access',
-        description: 'Offer the option for users to download purchased templates for offline use.',
-        icon: 'tabler:wifi-off',
-      },
-      {
-        title: 'Secure Cloud Storage',
-        description:
-          'Provide cloud storage for purchased templates, ensuring users can access and back up their templates from anywhere securely.',
-        icon: 'tabler:file-download',
-      },
-      {
-        title: 'Regular Updates',
-        description: 'Continuously add new templates and features to keep the app fresh and engaging for users.',
-        icon: 'tabler:refresh',
-      },
-      {
-        title: 'Wishlist',
-        description: `Allow users to create a wishlist of templates they're interested in, making it easier for them to revisit and potentially purchase later.`,
-        icon: 'tabler:heart',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1453738773917-9c3eff1db985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Vintage Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Other features</h3>
-    </Fragment>
-  </Content>
 
-  <!-- Stats Widget ****************** -->
 
-  <Stats
-    title="Statistics of our app"
-    stats={[
-      { amount: '20K', icon: 'tabler:download' },
-      { amount: '18.5K', icon: 'tabler:users' },
-      { amount: '4.7', icon: 'tabler:user-star' },
-    ]}
-  />
 
-  <!-- Testimonials Widget *********** -->
-
-  <Testimonials
+  <!-- <Testimonials
     title="What our users say?"
     testimonials={[
       {
@@ -243,11 +119,11 @@ const metadata = {
       href: 'https://github.com/onwidget/astrowind',
       icon: 'tabler:chevron-right',
     }}
-  />
+  /> -->
 
   <!-- FAQs Widget ******************* -->
 
-  <FAQs
+  <!-- <FAQs
     title="Still have some doubts?"
     items={[
       {
@@ -275,7 +151,7 @@ const metadata = {
           'While the app itself may be free to download, there may be costs associated with purchasing specific templates based on your preferences and project requirements.',
       },
     ]}
-  />
+  /> -->
 
   <!-- CallToAction Widget *********** -->
 

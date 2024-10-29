@@ -1,6 +1,6 @@
 ---
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import ItemGrid from '~/components/ui/ItemGrid.astro';
+// import ItemGrid from '~/components/ui/ItemGrid.astro';
 import Headline from '~/components/ui/Headline.astro';
 import type { Features as Props } from '~/types';
 
@@ -8,11 +8,6 @@ const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
-  items = [],
-  columns = 2,
-
-  defaultIcon,
-
   id,
   isDark = false,
   classes = {},
@@ -20,17 +15,44 @@ const {
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-5xl ${classes?.container ?? ''}`} bg={bg}>
-  <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
-  <ItemGrid
+<WidgetWrapper 
+  id={id} 
+  isDark={isDark} 
+  containerClass={`max-w-5xl mx-auto py-8 px-6 md:py-12 md:px-16 bg-lightBlue-100 dark:bg-gray-800 shadow-lg rounded-lg ${classes?.container ?? ''}`} 
+  bg={bg}>
+  
+  <!-- Encabezado estilizado -->
+  <Headline 
+    title={title} 
+    subtitle={subtitle} 
+    tagline={tagline} 
+    classes={{
+      title: 'text-4xl font-bold leading-tight text-gray-800 dark:text-gray-200 mb-4 text-center',
+      subtitle: 'text-xl text-gray-700 dark:text-gray-400 text-center mb-6',
+      tagline: 'text-md text-blue-600 text-center mb-8',
+      ...((classes?.headline as Record<string, string>) ?? {})
+    }} 
+  />
+
+  <!-- Imagen decorativa debajo del título -->
+  <div class="flex justify-center mb-8">
+    <img 
+      src="images/pro.jpg" 
+      alt="Imagen decorativa acorde al mensaje" 
+      class="w-full max-w-xs md:max-w-md object-cover rounded-lg shadow-md" 
+    />
+  </div>
+
+  <!-- Grid de ítems con iconos -->
+  <!-- <ItemGrid
     items={items}
     columns={columns}
     defaultIcon={defaultIcon}
     classes={{
-      container: '',
-      title: 'md:text-[1.3rem]',
-      icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
+      container: 'grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+      title: 'md:text-[1.3rem] font-semibold text-gray-800 dark:text-gray-200',
+      icon: 'text-white bg-blue-600 rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0 shadow-lg',
       ...((classes?.items as Record<string, never>) ?? {}),
     }}
-  />
+  /> -->
 </WidgetWrapper>
