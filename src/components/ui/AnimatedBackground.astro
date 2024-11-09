@@ -1,0 +1,10 @@
+--- 
+const { children } = Astro.props; 
+---
+
+<div class="relative w-full h-full overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 animate-gradient"></div>
+  <div class="relative z-10">
+    {children}
+  </div>
+</div>

@@ -1,0 +1,46 @@
+---
+import 'swiper/swiper-bundle.css';
+import { Swiper, SwiperSlide } from 'swiper/solid';
+
+const slidesData = [
+  {
+    title: 'Perfecto para trabajar desde casa',
+    description: 'Trabaja desde casa con la confianza de una red de fibra óptica.',
+    src: '/images/1.webp',
+    imageAlt: 'Trabajando desde casa con red de fibra óptica',
+  },
+  {
+    title: 'Mirar contenido sin interrupciones',
+    description: 'Disfruta de mirar tus aplicaciones de streaming en alta resolución.',
+    src: '/images/2.webp',
+    imageAlt: 'Mirar contenido en streaming sin interrupciones',
+  },
+  {
+    title: 'Juega sin límites ni interrupciones',
+    description: 'Disfruta de una conexión estable y con baja latencia.',
+    src: '/images/3.webp',
+    imageAlt: 'Jugando en red sin interrupciones',
+  },
+];
+---
+
+<div class="swiper">
+  <Swiper
+    spaceBetween={30}
+    slidesPerView={1}
+    loop={true}
+    pagination={{ clickable: true }}
+    navigation
+  >
+    {slidesData.map((slide) => (
+      <SwiperSlide>
+        <img src={slide.src} alt={slide.imageAlt} class="w-full h-auto object-cover" />
+        <div class="text-overlay">
+          <h2>{slide.title}</h2>
+          <p>{slide.description}</p>
+        </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
+

@@ -20,10 +20,10 @@ export const headerData = {
       ],
     },
     
-    {
-      text: 'Algo extra...',
-      href: '#',
-    },
+    // {
+    //   text: 'Algo extra...',
+    //   href: '#',
+    // },
   ],
   actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
 };

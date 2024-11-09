@@ -1,65 +1,87 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
-const Carrousel = ({ slides, duration }) => {
+const slidesData = [
+  {
+    title: 'Perfecto para trabajar desde casa',
+    description: 'Trabaja desde casa con la confianza de una red de fibra óptica.',
+    src: 'images/1.webp',
+    imageAlt: 'Trabajando desde casa con red de fibra óptica',
+  },
+  {
+    title: 'Mirar contenido sin interrupciones',
+    description: 'Disfruta de mirar tus aplicaciones de streaming en alta resolución.',
+    src: 'images/3.webp',
+    imageAlt: 'Mirar contenido en streaming sin interrupciones',
+  },
+  {
+    title: 'Juega sin límites ni interrupciones',
+    description: 'Disfruta de una conexión estable y con baja latencia.',
+    src: 'images/5.webp',
+    imageAlt: 'Jugando en red sin interrupciones',
+  },
+  {
+    title: 'Descarga tu contenido favorito a toda velocidad',
+    description: 'Descarga todo el contenido que necesitas sin cargos extra.',
+    src: 'images/4.webp',
+    imageAlt: 'Descarga rápida de contenido',
+  },
+];
+
+const Slide = ({ slide, isActive }) => (
+  <div
+    className={`relative min-w-full h-[400px] md:h-[500px] flex items-center justify-start ${
+      isActive ? 'animate-fade-up' : ''
+    }`}
+  >
+    <img src={slide.src} alt={slide.imageAlt} className="absolute top-0 left-0 w-full h-full object-cover" />
+    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black/90 via-transparent to-transparent"></div>
+    <div className="relative z-10 w-full md:w-1/2 flex flex-col h-full items-start justify-center p-4 md:p-8 rounded-l-lg md:left-7">
+      <h2 className="text-5xl sm:text-4xl md:text-6xl font-bold mb-4 text-white">{slide.title}</h2>
+      <p className="text-2xl sm:text-lg md:text-2xl text-gray-300">{slide.description}</p>
+    </div>
+  </div>
+);
+
+const Carrousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = slides.length;
+  const touchStartX = useRef(0);
 
-  const nextSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides);
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slidesData.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slidesData.length) % slidesData.length);
+
+  const handleTouchStart = (e) => (touchStartX.current = e.touches[0].clientX);
+  const handleTouchEnd = (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    if (Math.abs(touchStartX.current - touchEndX) > 50) {
+      // touchStartX.current - touchEndX > 0 ? nextSlide() : prevSlide();
+      (touchStartX.current - touchEndX > 0 ? nextSlide() : prevSlide)();
+    }
   };
 
-  // useEffect para el movimiento automático
-  useEffect(() => {
-    const interval = setInterval(nextSlide, duration);
-    return () => clearInterval(interval); // Limpiar el intervalo al desmontar
-  }, [duration, totalSlides]);
-
   return (
-    <div className="relative w-full overflow-hidden">
-      {/* Contenedor de los slides */}
+    <div className="relative overflow-hidden" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       <div
-        className="flex transition-transform duration-500 ease-in-out"
+        className="flex transition-transform duration-500"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
-        {slides.map((item, index) => (
-          <div
-            className="w-full flex-shrink-0 flex flex-col sm:flex-row" // flex-col para pantallas pequeñas, flex-row para grandes
-            key={index}
-          >
-            {/* Sección de texto (66% en pantallas grandes) */}
-            <div className="sm:w-2/3 w-full p-4 flex items-center">
-              <div>
-                <h2 className={`text-center sm:text-left text-4xl sm:text-6xl font-bold mb-2 ${item.color_title}`}>
-                  {item.title}
-                </h2>
-                <p className="text-center sm:text-left sm:text-2xl mb-4">{item.description}</p>
-              </div>
-            </div>
-
-            {/* Sección de imagen (33% en pantallas grandes) */}
-            <div className="sm:w-1/3 w-full">
-              <img
-                src={item.imageSrc}
-                alt={item.imageAlt}
-                className="w-full h-full object-cover rounded-xl"
-                loading="lazy"
-              />
-            </div>
-          </div>
+        {slidesData.map((slide, index) => (
+          <Slide key={index} slide={slide} isActive={index === currentSlide} />
         ))}
       </div>
 
-      {/* Indicadores del slide como botones */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            className={`w-3 h-3 rounded-full ${currentSlide === index ? 'bg-blue-500' : 'bg-gray-300'}`}
-            onClick={() => setCurrentSlide(index)} // Cambia el slide al índice correspondiente
-            aria-label={`Slide ${index + 1}`} // Mejora la accesibilidad
-          ></button>
-        ))}
-      </div>
+      {/* Botones de navegación (ocultos en móviles) */}
+      <button
+        className="absolute top-1/2 transform -translate-y-1/2 left-2 bg-gray-500 text-white p-4 rounded-full hover:bg-gray-500 focus:outline-none hidden md:block"
+        onClick={prevSlide}
+      >
+        ❮
+      </button>
+      <button
+        className="absolute top-1/2 transform -translate-y-1/2 right-2 bg-gray-500 text-white p-4 rounded-full hover:bg-gray-500 focus:outline-none hidden md:block"
+        onClick={nextSlide}
+      >
+        ❯
+      </button>
     </div>
   );
 };

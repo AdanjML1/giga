@@ -1,6 +1,5 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-// import HeroText from '~/components/widgets/HeroText.astro';
 import Prices from '~/components/widgets/Pricing.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
@@ -8,18 +7,9 @@ const metadata = {
   title: 'Pricing',
 };
 ---
-
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
-
-  <!-- <HeroText
-    tagline="Pricing"
-    title="Stellar Pricing for Every Journey"
-    subtitle="Choose the perfect plan that aligns with your cosmic goals."
-  /> -->
-
   <!-- Pricing Widget ******************* -->
-
   <Prices
     title="Nuestros planes"
     subtitle="Solo paga por lo que necesitas"
@@ -27,8 +17,11 @@ const metadata = {
       {
         title: 'giga basic',
         // subtitle: 'Optimo para uso domiciliario',
-        price: 329,
+        price: 379,
+        // discount: 50,
         period: 'Por mes',
+        wats: 'Hola que tal, me interesa el plan giga basic de 329 pesos por mes',
+        discount: 50, // Descuento de 50
         items: [
           {
             description: 'Disfruta de 20 megas de velocidad',
@@ -37,10 +30,13 @@ const metadata = {
             description: 'Ideal para hogares pequeños o personas que necesitan internet para navegar',
           },
           {
-            description: 'Revisar correos, redes sociales',
+            description: 'Redes sociales, chat y videollamadas en HD',
           },
           {
-            description: 'Adecuado para ver videos en resolución estándar (SD) en plataformas de streaming',
+            description: 'Disfruta de tus videojuegos favoritos',
+          },
+          {
+            description: 'Adecuado para ver videos en resolución alta en plataformas de streaming',
           }
         ],
         callToAction: {
@@ -52,8 +48,10 @@ const metadata = {
       {
         title: 'giga plus',
         // subtitle: 'Optimo para varios dispositivos en la misma red',
-        price: 430,
+        price: 479,
         period: 'Por mes',
+        wats: 'Hola que tal, me interesa el plan giga plus de 429 pesos por mes',
+        discount: 50, // Descuento de 50
         items: [
           {
             description: 'Disfruta de 30 megas de velocidad',
@@ -82,8 +80,10 @@ const metadata = {
       {
         title: 'giga max',
         // subtitle: 'Disfruta de la mejor velocidad',
-        price: 529,
+        price: 579,
+        wats: 'Hola que tal, me interesa el plan giga max de 529 pesos por mes',
         period: 'Por mes',
+        discount: 50, // Descuento de 50
         items: [
           {
             description: 'Disfruta de 40 megas de velocidad',
@@ -113,8 +113,10 @@ const metadata = {
       {
         title: 'giga super',
         // subtitle: 'Optimal choice for companies',
-        price: 629,
+        price: 679,
+        wats: 'Hola que tal, me interesa el plan giga super de 629 pesos por mes',
         period: 'Por mes',
+        discount: 50, // Descuento de 50
         items: [
           {
             description: 'Disfruta de 60 megas de velocidad',

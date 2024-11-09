@@ -1,88 +1,101 @@
 ---
 import { Icon } from 'astro-icon/components';
-import Button from '~/components/ui/Button.astro';
-import Headline from '~/components/ui/Headline.astro';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import type { Pricing as Props } from '~/types';
+// import Button from '~/components/ui/Button.astro';
+// import Headline from '~/components/ui/Headline.astro';
+import WhatsAppButton from '~/components/react/WhatsAppButton.jsx';
+
 
 const {
-  title = '',
-  subtitle = '',
-  tagline = '',
+  // title = '',
+  // subtitle = '',
+  // tagline = '',
   prices = [],
 
-  id,
-  isDark = false,
-  classes = {},
-  bg = await Astro.slots.render('bg'),
+  // id,
+  // isDark = false,
+  // classes = {},
+  // bg = await Astro.slots.render('bg'),
 } = Astro.props;
+
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<!-- <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mt-2 mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
-  <div class="flex items-stretch justify-center">
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        prices &&
-          prices.map(({ title, subtitle, price, period, items, callToAction, hasRibbon = false, ribbonTitle }) => (
-            <div class="flex justify-center">
-              <div class="relative flex w-full max-w-sm">
-                {price && period && (
-                  <div class="rounded-lg backdrop-blur border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-lg transition-transform duration-300 ease-in-out transform hover:bg-blue-100 dark:hover:bg-slate-800 p-6 flex flex-col justify-between text-center">
-                    
-                    {hasRibbon && ribbonTitle && (
-                      <div class="absolute top-0 right-0 transform translate-x-1 -translate-y-1">
-                        <span class="bg-green-700 text-white text-xs font-bold uppercase px-3 py-1 rounded-bl-md">
-                          {ribbonTitle}
-                        </span>
-                      </div>
-                    )}
-                    
-                    <div class="px-2 py-4">
-                      {title && (
-                        <h3 class="text-xl font-semibold uppercase leading-6 tracking-wide mb-2">{title}</h3>
-                      )}
-                      {subtitle && <p class="font-light sm:text-lg text-gray-600 dark:text-slate-400">{subtitle}</p>}
-                      <div class="my-6">
-                        <div class="flex items-center justify-center text-center mb-1">
-                          <span class="text-5xl">$</span>
-                          <span class="text-6xl font-extrabold">{price}</span>
-                        </div>
-                        <span class="text-base leading-6 lowercase text-gray-600 dark:text-slate-400">{period}</span>
-                      </div>
-                      {items && (
-                        <ul class="my-4 space-y-2 text-left">
-                          {items.map(
-                            ({ description, icon }) =>
-                              description && (
-                                <li class="flex items-start space-x-3 leading-7">
-                                  <div class="rounded-full bg-primary mt-1 p-2">
-                                    <Icon name={icon ? icon : 'tabler:check'} class="w-5 h-5 text-white" />
-                                  </div>
-                                  <span class="text-gray-800 dark:text-slate-300">{description}</span>
-                                </li>
-                              )
-                          )}
-                        </ul>
-                      )}
-                    </div>
-                    {callToAction && (
-                      <div class="flex justify-center mt-4">
-                        {typeof callToAction === 'string' ? (
-                          <Fragment set:html={callToAction} />
-                        ) : (
-                          callToAction &&
-                          callToAction.href && <Button {...(hasRibbon ? { variant: 'primary' } : {})} {...callToAction} />
-                        )}
-                      </div>
+  
+
+</WidgetWrapper> -->
+
+<p class="text-gray-500 dark:text-slate-400 text-center text-3xl">
+  Nuestros planes
+
+</p>
+<!-- Contenedor flex para las cards -->
+<!-- Contenedor flex para las cards -->
+<div class="flex flex-col md:flex-row overflow-x-auto space-y-4 md:space-y-0 md:space-x-4 p-6 scrollbar-hide">
+  {
+    prices && prices.map(({ title, subtitle, price, discount, period, items, wats, hasRibbon = false, ribbonTitle }) => (
+      <div class="flex-shrink-0 w-full md:w-auto md:max-w-xs"> <!-- Sin tamaño fijo en móvil, usa max-w-xs en pantallas grandes -->
+        <div class="relative flex w-full">
+          {price && period && (
+            <div class="rounded-lg backdrop-blur-lg border-2 border-transparent bg-gradient-to-r from-purple-500 to-indigo-600 shadow-xl transition-transform duration-300 ease-in-out transform md:hover:scale-105 md:hover:shadow-2xl p-6 flex flex-col justify-between text-center">
+              
+              {hasRibbon && ribbonTitle && (
+                <div class="absolute top-0 right-0 transform translate-x-1 -translate-y-1">
+                  <span class="bg-yellow-500 text-white text-xs font-bold uppercase px-3 py-1 rounded-bl-md">
+                    {ribbonTitle}
+                  </span>
+                </div>
+              )}
+              
+              <div class="px-2 py-4">
+                {title && (
+                  <h3 class="text-2xl font-semibold uppercase tracking-wide text-white mb-2">{title}</h3>
+                )}
+                {subtitle && <p class="font-light sm:text-lg text-gray-200">{subtitle}</p>}
+                
+                <div class="my-6">
+                  <div class="flex items-center justify-center text-center mb-4">
+                    {discount ? (
+                      <>
+                        <span class="text-4xl line-through text-gray-300 block mb-1">${price}</span>
+                        <span class="text-5xl font-extrabold text-yellow-400">${price - discount}</span>
+                      </>
+                    ) : (
+                      <>
+                        <span class="text-5xl text-white">$</span>
+                        <span class="text-6xl font-extrabold text-white">{price}</span>
+                      </>
                     )}
                   </div>
+                  <span class="text-base leading-6 lowercase text-gray-300">{period}</span>
+                </div>
+
+                {items && (
+                  <ul class="my-4 space-y-2 text-left">
+                    {items.map(
+                      ({ description, icon }) =>
+                        description && (
+                          <li class="flex items-start space-x-3 leading-7">
+                            <div class="rounded-full bg-gradient-to-r from-yellow-400 to-red-500 mt-1 p-2">
+                              <Icon name={icon ? icon : 'tabler:check'} class="w-5 h-5 text-white" />
+                            </div>
+                            <span class="text-gray-100">{description}</span>
+                          </li>
+                        )
+                    )}
+                  </ul>
                 )}
               </div>
+
+              <WhatsAppButton phoneNumber="9982384393" message={wats} client:load />
             </div>
-          ))
-      }
-    </div>
-  </div>
-</WidgetWrapper>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+
+
 

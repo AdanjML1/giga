@@ -144,8 +144,9 @@ export interface Item {
 export interface Price {
   title?: string;
   subtitle?: string;
+  discount?: number;
   description?: string;
-  price?: number | string;
+  price?: number;
   period?: string;
   items?: Array<Item>;
   callToAction?: CallToAction;

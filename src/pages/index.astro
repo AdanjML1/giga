@@ -7,30 +7,27 @@ import Features from '~/components/widgets/Features.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Steps from '~/components/widgets/Steps.astro';
-
+// import Carrousel from '~/components/react/Carrousel';
+import SlideShow from '~/components/react/SlideShow';
+// import SimpleSlide from '~/components/react/SimpleSlide';
+// import Carrousel from '~/components/Carrousel.astro';
 const metadata = {
-  title: 'Landing page GigaNet',
+  title: 'GigaNet World',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
+  <div class="w-full h-90 flex justify-center items-center">
+    <!-- <Carrousel client:load /> -->
+     <!-- <Carrousel client:visible/> -->
+     <SlideShow client:load/>
+  </div>
 
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
-  >
-    <Fragment slot="title">
+  <Hero>
+    <!-- <SimpleSlide client:load /> -->
+    <Fragment slot="title" >
       <!-- Conectando tu mundo a la velocidad de la luz -->
       <span class="text-blue-700 dark:text-sky-600 highlight">GigaNet</span>
       es la mejor solución para tus necesidades de conectividad
@@ -38,12 +35,12 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">GigaNet, con sede en Cancún,</span> es la opción ideal para quienes buscan un servicio
-        de internet rápido y confiable. Nuestra infraestructura de fibra óptica garantiza una conexión estable y de alta
+        Nuestra infraestructura de fibra óptica garantiza una conexión estable y de alta
         velocidad, perfecta para hogares y oficinas que requieren una conectividad sin interrupciones.</span
       >
     </Fragment>
   </Hero>
+
 
   <Features
     id="features"
@@ -86,8 +83,7 @@ const metadata = {
     stats={[
       {  amount: 'Velocidad' },
       {  amount: 'Confiabilidad' },
-      {  amount: 'Inovación' },
-      // { title: 'Users', amount: '48.4K' },
+      {  amount: 'Innovación' },
     ]}
   />
 

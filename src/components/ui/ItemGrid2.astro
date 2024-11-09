@@ -3,6 +3,7 @@ import type { ItemGrid as Props } from '~/types';
 import { Icon } from 'astro-icon/components';
 import { twMerge } from 'tailwind-merge';
 import Button from './Button.astro';
+import CopyButton from '../react/CopyButton';
 
 const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props;
 
@@ -54,16 +55,20 @@ console.log(items);
           {description && (
             <p class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)} set:html={description} />
           )}
-          {callToAction && (
+          {callToAction ? (
             <div class="mt-2">
               <a href={callToAction.href} target="_blank" rel="noopener noreferrer" class="inline-block">
-                {/* <Button label={callToAction.label} /> */}
                 <Button {...callToAction} />
               </a>
-              
+            </div>
+          ) : (
+            // <CopyButton text={description} client:load />
+            <div class="mt-2 flex items-center">
+              <CopyButton text={description} client:load />
             </div>
           )}
         </div>
+
       ))}
     </div>
   )

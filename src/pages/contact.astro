@@ -1,9 +1,10 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 // import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
+// import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
+
 // import Button from '~/components/ui/Button.astro';
 // import Image from '~/components/common/Image.astro';
 
@@ -17,45 +18,68 @@ const metadata = {
 
   <!-- <HeroText tagline="Contact" title="Let's Connect!" /> -->
   <Hero2
-   
     image={{
       src: 'https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 50,
+      alt: 10,
     }}
   >
     <Fragment slot="title">
-      <span class="text-accent dark:text-white highlight">Atenderemos tu consulta y responderemos lo más pronto posible</span>  <br />  <span
-        class="hidden xl:inline"></span
-      >
+      <span class="text-accent dark:text-white highlight">Contactanos</span> atenderemos tu consulta y responderemos lo más
+      pronto posible<br />
+      <span class="hidden xl:inline"></span>
     </Fragment>
+    <div class="max-w-3xl mx-auto">
+      <Features2
+      title="Contáctanos!"
+      items={[
+        {
+          title: 'Teléfono',
+          description: '+52 (998) 238-4393',
+          icon: 'tabler:headset',
+        },
+        {
+          title: 'Correo',
+          description: 'ventasgiganetworld@gmail.com',
+          icon: 'tabler:mail',
+        },
+        {
+          title: 'Facebook',
+          description: 'Siguenos en Facebook',
+          icon: 'tabler:brand-facebook',
+          callToAction: {
+            href: 'https://www.facebook.com/share/NMySiKHa71LxJm55/',
+            icon: 'tabler:arrow-right',
+          },
+        },
+      ]}
+    />
+    </div>
   </Hero2>
   <Features2
-  title="Contáctanos!"
-  items={[
-  
-    {
-      title: 'Teléfono',
-      description: '+52 (998) 238-4393',
-      icon: 'tabler:headset',
-    },
-    {
-      title: 'Correo',
-      description: 'ventasgiganetworld@gmail.com',
-      icon: 'tabler:mail',
-    },
-    {
-      title: 'Facebook',
-      description: 'Siguenos en Facebook',
-      icon: 'tabler:brand-facebook',
-      callToAction: {
-        href: 'https://www.facebook.com/share/NMySiKHa71LxJm55/',
-        icon: 'tabler:arrow-right',
-
+    title="Contáctanos!"
+    items={[
+      {
+        title: 'Teléfono',
+        description: '+52 (998) 238-4393',
+        icon: 'tabler:headset',
       },
-    },
-  ]}
-/>
-  <ContactUs
+      {
+        title: 'Correo',
+        description: 'ventasgiganetworld@gmail.com',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Facebook',
+        description: 'Siguenos en Facebook',
+        icon: 'tabler:brand-facebook',
+        callToAction: {
+          href: 'https://www.facebook.com/share/NMySiKHa71LxJm55/',
+          icon: 'tabler:arrow-right',
+        },
+      },
+    ]}
+  />
+  <!-- <ContactUs
     id="form"
     title="Drop us a message today!"
     subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
@@ -79,9 +103,7 @@ const metadata = {
         'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
     }}
     description="Our support team typically responds within 24 business hours."
-  />
+  /> -->
 
   <!-- Features2 Widget ************** -->
-
-
 </Layout>

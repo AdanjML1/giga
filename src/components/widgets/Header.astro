@@ -8,6 +8,9 @@ import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
+import {Image} from 'astro:assets';
+
+const logo = '/images/logo.png';
 
 interface Link {
   text?: string;
@@ -72,9 +75,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
       <a class="flex items-center" href={getHomePermalink()}>
         <!-- Usa la etiqueta img para mostrar el logo -->
-        <img src='images/logo.png' width={180} height={180} loading={'lazy'} alt="Giga Logo" class="h-16 w-auto" />
+        <!-- <img src='images/logo.png' width={180} height={180} loading={'lazy'} alt="Giga Logo" class="h-16 w-auto" /> -->
 
-        <!-- <Image src={logo} width={100} height={60} alt="Giga Logo" /> -->
+        <!-- <Image src={logo}  alt="Giga Logo" class="h-20 w-20" /> -->
+           <Image src={logo}  width={120} height={120} loading={'lazy'} alt="Giga Logo" />
       </a>
       <div class="flex items-center md:hidden">
         <ToggleMenu />

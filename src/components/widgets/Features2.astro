@@ -2,6 +2,8 @@
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Headline from '~/components/ui/Headline.astro';
 import ItemGrid2 from '~/components/ui/ItemGrid2.astro';
+// import CopyButton from '~/components/react/CopyButton.jsx';
+
 import type { Features as Props } from '~/types';
 
 const {
@@ -17,6 +19,7 @@ const {
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
+
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
@@ -35,4 +38,5 @@ const {
       ...((classes?.items as Record<string, never>) ?? {}),
     }}
   />
+  
 </WidgetWrapper>
